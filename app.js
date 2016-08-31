@@ -24,3 +24,6 @@ request.get('https://news.ycombinator.com/rss', function(error, response, body) 
     display(`${title} -- ${link}`);
   });
 });
+
+/* Statement injection via eval() in the display() function */
+display('"); logger.info(1+1+1); //');
