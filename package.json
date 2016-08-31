@@ -23,6 +23,9 @@
   "homepage": "https://github.com/ualbuquerque/security-sandbox#readme",
   "dependencies": {
     "lodash": "^4.15.0",
-    "request": "^2.74.0"
+    "request": "^2.74.0",
+    "winston": "^2.2.0",
+    "xmldom": "^0.1.22",
+    "xpath": "0.0.23"
   }
 }
