@@ -25,9 +25,11 @@ request.get('https://news.ycombinator.com/rss', function(error, response, body) 
   const items = xpath.select('//rss/channel/item', xmldoc);
 
   _(items).forEach(function(item) {
-    const title = xpath.select('title/text()', item);
-    const link = xpath.select('link/text()', item)
-    display(`${title} -- ${link}`);
+    const title = xpath.select('title/text()', item)[0].toString();
+    const link = xpath.select('link/text()', item)[0].toString();
+    logger.info(`${title} -- ${link}`);
+
+    /* SQL injection via either title or link variables */
     db.run(`INSERT INTO news VALUES ('${title}', '${link}')`);
   });
 });
