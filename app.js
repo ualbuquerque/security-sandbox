@@ -28,7 +28,7 @@ request.get('https://news.ycombinator.com/rss', function(error, response, body) 
     const title = xpath.select('title/text()', item);
     const link = xpath.select('link/text()', item)
     display(`${title} -- ${link}`);
-    db.run(`INSERT INTO news VALUES '${title}', '${link}'`);
+    db.run(`INSERT INTO news VALUES ('${title}', '${link}')`);
   });
 });
 
