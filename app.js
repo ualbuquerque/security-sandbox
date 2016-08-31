@@ -5,8 +5,14 @@
 const _ = require('lodash');
 const logger = require('winston');
 const request = require('request');
+const sqlite3 = require('sqlite3').verbose();
 const xmldom = require('xmldom').DOMParser;
 const xpath = require('xpath');
+
+const db = new sqlite3.Database('news.db');
+db.serialize(function() {
+  db.run('CREATE TABLE IF NOT EXISTS news (title TEXT, url TEXT)');
+});
 
 function display(string) {
   /* This should be flagged */
@@ -22,6 +28,7 @@ request.get('https://news.ycombinator.com/rss', function(error, response, body) 
     const title = xpath.select('title/text()', item);
     const link = xpath.select('link/text()', item)
     display(`${title} -- ${link}`);
+    db.run(`INSERT INTO news VALUES '${title}', '${link}'`);
   });
 });
 
