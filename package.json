@@ -1,0 +1,28 @@
+{
+  "name": "security-sandbox",
+  "version": "0.1.0",
+  "description": "Sandbox project for SAST evalution",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ualbuquerque/security-sandbox.git"
+  },
+  "keywords": [
+    "security",
+    "sandbox",
+    "benchmark"
+  ],
+  "author": "ulisses.albuquerque@team.telstra.com",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/ualbuquerque/security-sandbox/issues"
+  },
+  "homepage": "https://github.com/ualbuquerque/security-sandbox#readme",
+  "dependencies": {
+    "lodash": "^4.15.0",
+    "request": "^2.74.0"
+  }
+}
