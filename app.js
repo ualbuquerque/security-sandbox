@@ -27,12 +27,12 @@ request.get('https://news.ycombinator.com/rss', function(error, response, body) 
   _(items).forEach(function(item) {
     const title = xpath.select('title/text()', item)[0].toString();
     const link = xpath.select('link/text()', item)[0].toString();
-    logger.info(`${title} -- ${link}`);
 
     /* SQL injection via either title or link variables */
-    db.run(`INSERT INTO news VALUES ('${title}', '${link}')`);
+    logger.info(`${title} -- ${link}`);
+    db.run("INSERT INTO news VALUES ('" + title + "', '" + link + "')");
   });
 });
 
 /* Statement injection via eval() in the display() function */
-display('"); logger.info(1+1+1); //');
+display('injected"); logger.info(1+1+1); //');
